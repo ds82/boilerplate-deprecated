@@ -4,6 +4,14 @@ This is my webapp boilerplate repo. It contains a basic webapp project including
 
 I will add more features over time and maybe transform this to a yeoman generator in the future. 
 
+## Getting Started
+
+1. clone the repo
+2. cd into cloned repo
+3. npm install
+4. grunt server
+5. enjoy.
+
 ## Tests
 
 I will add testing frameworks and basic tests to the repo, soon(TM). I will use karma and jasmine.
