@@ -1,11 +1,10 @@
-"use strict";
+'use strict';
  /**
- * angular-modules
+ * modules
  * @author Dennis Sänger, 2013
  */
 define([
-	'ang',
-	'components/angular-resource/angular-resource'
-], function( ang, resource ) {
+  'angular/controller/app'
+], function( ) {
  
 });
