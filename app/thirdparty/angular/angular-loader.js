@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.1.6-285f6b4
+ * @license AngularJS v1.2.0-6c59e77
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -29,9 +29,12 @@ function setupModuleLoader(window) {
      * @name angular.module
      * @description
      *
-     * The `angular.module` is a global place for creating and registering Angular modules. All
-     * modules (angular core or 3rd party) that should be available to an application must be
+     * The `angular.module` is a global place for creating, registering and retrieving Angular modules.
+     * All modules (angular core or 3rd party) that should be available to an application must be
      * registered using this mechanism.
+     *
+     * When passed two or more arguments, a new module is created.  If passed only one argument, an
+     * existing module (the name passed as the first argument to `module`) is retrieved.
      *
      *
      * # Module
@@ -179,7 +182,7 @@ function setupModuleLoader(window) {
            * @param {Function} animationFactory Factory function for creating new instance of an animation.
            * @description
            *
-           * **NOTE**: animations are take effect only if the **ngAnimate** module is loaded.
+           * **NOTE**: animations take effect only if the **ngAnimate** module is loaded.
            *
            *
            * Defines an animation hook that can be later used with {@link ngAnimate.$animate $animate} service and

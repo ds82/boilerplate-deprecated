@@ -1,16 +1,26 @@
 /**
- * @license AngularJS v1.1.6-285f6b4
+ * @license AngularJS v1.2.0-6c59e77
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
 
-var ngResourceMinErr = angular.$$minErr('ngResource');
+var $resourceMinErr = angular.$$minErr('$resource');
 
 /**
  * @ngdoc overview
  * @name ngResource
  * @description
+ *
+ * # ngResource
+ *
+ * `ngResource` is the name of the optional Angular module that adds support for interacting with
+ * [RESTful](http://en.wikipedia.org/wiki/Representational_State_Transfer) server-side data sources.
+ * `ngResource` provides the {@link ngResource.$resource `$resource`} service.
+ *
+ * {@installModule resource}
+ *
+ * See {@link ngResource.$resource `$resource`} for usage.
  */
 
 /**
@@ -25,23 +35,14 @@ var ngResourceMinErr = angular.$$minErr('ngResource');
  * The returned resource object has action methods which provide high-level behaviors without
  * the need to interact with the low level {@link ng.$http $http} service.
  *
- * # Installation
- * To use $resource make sure you have included the `angular-resource.js` that comes in Angular
- * package. You can also find this file on Google CDN, bower as well as at
- * {@link http://code.angularjs.org/ code.angularjs.org}.
- *
- * Finally load the module in your application:
- *
- *        angular.module('app', ['ngResource']);
- *
- * and you are ready to get started!
+ * Requires the {@link ngResource `ngResource`} module to be installed.
  *
  * @param {string} url A parametrized URL template with parameters prefixed by `:` as in
  *   `/user/:username`. If you are using a URL with a port number (e.g.
  *   `http://example.com:8080/api`), it will be respected.
  *
  *   If you are using a url with a suffix, just add the suffix, like this:
- *   `$resource('http://example.com/resource.json')` or `$resource('http://example.com/:id.json')
+ *   `$resource('http://example.com/resource.json')` or `$resource('http://example.com/:id.json')`
  *   or even `$resource('http://example.com/resource/:resource_id.:format')`
  *   If the parameter before the suffix is empty, :resource_id in this case, then the `/.` will be
  *   collapsed down to a single `.`.  If you need this sequence to appear and not collapse then you
@@ -454,7 +455,7 @@ angular.module('ngResource', ['ng']).
             break;
           case 0: break;
           default:
-            throw ngResourceMinErr('badargs',
+            throw $resourceMinErr('badargs',
               "Expected up to 4 arguments [params, data, success, error], got {0} arguments", arguments.length);
           }
 
@@ -479,8 +480,8 @@ angular.module('ngResource', ['ng']).
 
             if (data) {
               if ( angular.isArray(data) != !!action.isArray ) {
-                throw ngResourceMinErr('badcfg', 'Error in resource configuration. Expected response' +
-                  ' to contain an {0} but got an {1}', 
+                throw $resourceMinErr('badcfg', 'Error in resource configuration. Expected response' +
+                  ' to contain an {0} but got an {1}',
                   action.isArray?'array':'object', angular.isArray(data)?'array':'object');
               }
               if (action.isArray) {

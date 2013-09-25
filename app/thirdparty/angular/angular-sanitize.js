@@ -1,35 +1,24 @@
 /**
- * @license AngularJS v1.1.6-285f6b4
+ * @license AngularJS v1.2.0-6c59e77
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
 
-var ngSanitizeMinErr = angular.$$minErr('ngSanitize');
+var $sanitizeMinErr = angular.$$minErr('$sanitize');
 
 /**
  * @ngdoc overview
  * @name ngSanitize
  * @description
- * 
+ *
+ * # ngSanitize
+ *
  * The `ngSanitize` module provides functionality to sanitize HTML.
- * 
- * # Installation
- * As a separate module, it must be loaded after Angular core is loaded; otherwise, an 'Uncaught Error:
- * No module: ngSanitize' runtime error will occur.
  *
- * <pre>
- *   <script src="angular.js"></script>
- *   <script src="angular-sanitize.js"></script>
- * </pre>
+ * {@installModule sanitize}
  *
- * # Usage
- * To make sure the module is available to your application, declare it as a dependency of you application
- * module.
- *
- * <pre>
- *   angular.module('app', ['ngSanitize']);
- * </pre>
+ * See {@link ngSanitize.$sanitize `$sanitize`} for usage.
  */
 
 /*
@@ -226,9 +215,10 @@ function htmlParser( html, handler ) {
 
       // Comment
       if ( html.indexOf("<!--") === 0 ) {
-        index = html.indexOf("-->");
+        // comments containing -- are not allowed unless they terminate the comment
+        index = html.indexOf("--", 4);
 
-        if ( index >= 0 ) {
+        if ( index >= 0 && html.lastIndexOf("-->", index) === index) {
           if (handler.comment) handler.comment( html.substring( 4, index ) );
           html = html.substring( index + 3 );
           chars = false;
@@ -279,7 +269,7 @@ function htmlParser( html, handler ) {
     }
 
     if ( html == last ) {
-      throw ngSanitizeMinErr('badparse', "The sanitizer was unable to parse the following block of html: {0}", html);
+      throw $sanitizeMinErr('badparse', "The sanitizer was unable to parse the following block of html: {0}", html);
     }
     last = html;
   }
@@ -429,8 +419,10 @@ angular.module('ngSanitize', []).value('$sanitize', $sanitize);
  * @function
  *
  * @description
- *   Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
- *   plain email address links.
+ * Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
+ * plain email address links.
+ *
+ * Requires the {@link ngSanitize `ngSanitize`} module to be installed.
  *
  * @param {string} text Input text.
  * @param {string} target Window (_blank|_self|_parent|_top) or named frame to open links in.
