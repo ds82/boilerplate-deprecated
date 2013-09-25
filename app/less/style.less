@@ -1,13 +1,12 @@
-// DISABLED - bootstrap v3rc1 has no .less files
 // import bootstrap variables & mixins
-// @import "bootstrap/variables.less";
-// @import "bootstrap/mixins.less";
+@import "../thirdparty/bootstrap/less/variables.less";
+@import "../thirdparty/bootstrap/less/mixins.less";
 
 // import customized variables & mixins
+// overrides bootstrap stuff where neccessiary
 @import "variables.less";
 @import "mixins.less";
 
 // import bootstrap style
-@import "../thirdparty/bootstrap/css/bootstrap.css";
-@import "../thirdparty/bootstrap-glyphicons/less/bootstrap-glyphicons.less";
+@import "bootstrap.less";
 

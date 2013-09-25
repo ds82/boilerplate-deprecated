@@ -18,52 +18,23 @@
     </head>
     <body data-ng-controller="AppController">
 
-      <div class="container">
+      <div class="container" data-ng-view>
   
-        <h2>
-          boilerplate
-          <span class="label label-success">alpha2</span>
-        </h2>
-
-        <div class="navbar navbar-inverse">
-          <!-- <a class="navbar-brand" href="#">boilerplate</a> -->
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div>
-        <div class="well">
-            <p>You now have</p>
-            <ul>
-                <li>HTML5 Boilerplate</li>
-                <li>Twitter Bootstrap v3.0rc1</li>
-                <li>RequireJS</li>
-                <li>jQuery 1.9x</li>
-                <li>angularjs-dev</li>
-            </ul>
-            <p>as well as basic configurations for</p>
-            <ul>
-                <li>Grunt</li>
-                <li>Bower</li>
-                <li>jshint</li>
-            </ul>
-            <p>to get you started.</p>
-            <h3>Enjoy coding!</h3>
-        </div>
       </div>
 
-      <!--[if lt IE 7]>
+      <!--[if lt IE 9]>
           <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
       <![endif]-->
 
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <!--
       <script>
           var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
           (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
           g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
           s.parentNode.insertBefore(g,s)}(document,'script'));
       </script>
+      -->
 
       <!-- build:js scripts/main.js -->
       <script data-main="scripts/main" src="thirdparty/requirejs/require-jquery.js"></script>
