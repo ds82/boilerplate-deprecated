@@ -1,0 +1,5 @@
+define([
+  'bspath/modal'
+], function() {
+
+});
