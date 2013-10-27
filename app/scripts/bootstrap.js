@@ -1,5 +1,5 @@
 define([
-  'bspath/modal'
+  'bs/modal'
 ], function() {
 
 });

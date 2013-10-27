@@ -5,8 +5,8 @@ require.config({
     angularjs:            '../thirdparty/angular/angular',
     app:                  'angular/app',
     modules:              'angular/modules',
-    ngext:                '../thirdparty/angular/',
-    bspath:               '../thirdparty/bootstrap/js/'
+    ng:                   '../thirdparty/angular/',
+    bs:                   '../thirdparty/bootstrap/js/'
   },
   shim: {
     'bootstrap': {

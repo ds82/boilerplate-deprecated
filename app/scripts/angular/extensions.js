@@ -1,4 +1,4 @@
 define([
-    'ngext/angular-resource',
-    'ngext/angular-route'
+    'ng/angular-resource',
+    'ng/angular-route'
 ], function() {});
