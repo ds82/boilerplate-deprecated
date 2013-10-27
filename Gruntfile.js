@@ -266,6 +266,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
+            'less',
             'clean:server',
             'concurrent:server',
             'livereload-start',
