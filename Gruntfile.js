@@ -1,5 +1,6 @@
 // Generated on 2013-04-24 using generator-webapp 0.1.7
 'use strict';
+var path = require('path');
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -42,46 +43,18 @@ module.exports = function (grunt) {
             }
 
         },
-        connect: {
+        express: {
             options: {
-                port: 9000,
-                // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+              port: 9000,
+              hostname: '*'
             },
             livereload: {
                 options: {
-                    middleware: function (connect) {
-                        return [
-                            lrSnippet,
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'app')
-                        ];
-                    }
+                  bases: path.resolve('./app'),
+                  monitor: {},
+                  debug: true,
+                  server: path.resolve('./server/main')
                 }
-            },
-            test: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'test')
-                        ];
-                    }
-                }
-            },
-            dist: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, 'dist')
-                        ];
-                    }
-                }
-            }
-        },
-        open: {
-            server: {
-                path: 'http://localhost:<%= connect.options.port %>'
             }
         },
         clean: {
@@ -260,21 +233,12 @@ module.exports = function (grunt) {
         'exec:less' 
     ]);
 
-    grunt.registerTask('server', function (target) {
-        if (target === 'dist') {
-            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
-        }
-
-        grunt.task.run([
-            'less',
-            'clean:server',
-            'concurrent:server',
-            'livereload-start',
-            'connect:livereload',
-            'open',
-            'watch'
-        ]);
-    });
+    grunt.registerTask('server', [ 
+        'less',
+        'livereload-start',
+        'express',
+        'watch'
+    ]);
 
     grunt.registerTask('test', [
         'clean:server',
