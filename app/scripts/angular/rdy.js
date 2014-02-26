@@ -1,32 +1,35 @@
-define([
-  'jquery',
-  'angularjs',
-  'app',
-  'angular/routes',
-  'angular/modules',
-], function( $, angularjs, app ) {
-  'use strict';
+// define([
+//   'jquery',
+//   'angularjs',
+//   'app',
+//   'angular/routes',
+//   'angular/modules',
+// ], function( $, angularjs, app ) {
+'use strict';
 
-  app.run(function( $rootScope ) {
+var $         = require( 'jquery' ),
+    app       = require( 'app' ),
+    routes    = require( './routes' ),
+    ngModules = require( './modules' );
 
-    // helper function for partial
-    $rootScope.partial = function( partial ) {
+app.run(function( $rootScope ) {
 
-      var ext = ( partial.match(/\.html$/) ) ? '' : '.html';
-      return 'partials/' + partial + ext;
-    };
-  });
+  // helper function for partial
+  $rootScope.partial = function( partial ) {
 
-
-  $(document).ready(function() {
-
-    console.log('bootstrapping angular...');
-    var $html = $('html');
-    $html.addClass('ng-app="app"');
-    // @todo make it dynamic
-    angularjs.bootstrap( $html, ['app'] );
-
-  });
-
-  return app;
+    var ext = ( partial.match(/\.html$/) ) ? '' : '.html';
+    return 'partials/' + partial + ext;
+  };
 });
+
+
+$(document).ready(function() {
+
+  // console.log('bootstrapping angular...');
+  // var $html = $('html');
+  // $html.addClass('ng-app="app"');
+  // // @todo make it dynamic
+  // angular.bootstrap( $html, ['app'] );
+
+});
+
