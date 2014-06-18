@@ -11,8 +11,11 @@ var source       = require('vinyl-source-stream');
 var bOpts = {
   default: {
     outfile: 'main.js',
+    entries: './app/js/main.js',
     debug: !gulp.env.production,
-    require: [],
+    require: [
+      ['./app/thirdparty/jquery/jquery', { expose: 'jquery' }],
+    ],
     exclude: []
   }
 };
@@ -45,11 +48,14 @@ gulp.task('connect', function () {
 });
 
 gulp.task('serve', ['connect'], function () {
-    require('opn')('http://localhost:9000');
+  require('opn')('http://localhost:9000');
 });
 
 gulp.task('browserify', function() {
-  var b = browserify({ entries: './app/js/main.js' });
+  var b = browserify( bOpts.default );
+  bOpts.default.require.forEach(function( entry ) {
+    b.require( entry[0], entry[1] );
+  });
 
   return b.bundle()
       .on('error', function (err) {
@@ -66,7 +72,6 @@ gulp.task('watch', ['connect', 'browserify', 'serve'], function () {
     var server = $.livereload();
 
     // watch for changes
-
     gulp.watch([
         'app/dist/css/*.css'
     ]).on('change', function (file) {
