@@ -1,10 +1,9 @@
-define(['app'], function( app ) {
-  'use strict';
+'use strict';
+var app = require('app');
 
-  app.controller('MainController', [
-    '$scope',
-    function( $scope ) {
-      $scope.controller = 'Main';
-    }
-  ]);
-});
+app.controller('MainController', [
+  '$scope',
+  function( $scope ) {
+    $scope.controller = 'Main';
+  }
+]);

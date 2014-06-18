@@ -1,12 +1,9 @@
-define([
-  'app'
-], function( app ) {
-  'use strict';
+'use strict';
+var app = require('app');
 
-  app.controller('AppController', [
-    '$scope',
-    function( $scope ) {
-      $scope.version = 'alpha2';
-    }
-  ]);
-});
+app.controller('AppController', [
+  '$scope',
+  function( $scope ) {
+    $scope.version = 'alpha2';
+  }
+]);

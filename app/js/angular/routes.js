@@ -1,18 +1,16 @@
-define([
-  'app'
-], function( app ) {
-  'use strict';
+'use strict';
 
-  app.config(function( $routeProvider ) {
-    $routeProvider
-      
-      .when('/', {
-        templateUrl: 'partials/main.html',
-        controller: 'MainController'
-      })
+var app = require('app');
 
-      .otherwise({ redirect: '/' })
+app.config(function( $routeProvider ) {
+  $routeProvider
+    
+    .when('/', {
+      templateUrl: 'partials/main.html',
+      controller: 'MainController'
+    })
 
-    ;
-  });
+    .otherwise({ redirect: '/' })
+
+  ;
 });

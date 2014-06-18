@@ -1,5 +1,3 @@
-define([
-  'bs/modal'
-], function() {
+'use strict';
 
-});
+require('thirdparty/bootstrap/js/modal');

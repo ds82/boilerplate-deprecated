@@ -15,6 +15,8 @@ var bOpts = {
     debug: !gulp.env.production,
     require: [
       ['./app/thirdparty/jquery/jquery', { expose: 'jquery' }],
+      ['./app/thirdparty/angular/angular', { expose: 'angular' }],
+      ['./app/js/angular/app', { expose: 'app' }],
     ],
     exclude: []
   }

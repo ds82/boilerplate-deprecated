@@ -1,4 +1,2 @@
-define([
-    'ng/angular-resource',
-    'ng/angular-route'
-], function() {});
+require('thirdparty/angular-resource/angular-resource');
+require('thirdparty/angular-route/angular-route');
