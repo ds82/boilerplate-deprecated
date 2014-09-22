@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require( 'app' );
+var app = require( 'ng/app' );
 
 app.controller('MainCtrl', [
   '$scope',
