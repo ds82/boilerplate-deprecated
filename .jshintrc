@@ -1,7 +1,6 @@
 {
     "node": true,
     "browser": true,
-    "es5": true,
     "esnext": true,
     "bitwise": true,
     "camelcase": true,
@@ -21,5 +20,8 @@
     "smarttabs": true,
     "predef": [
         "define"
-    ]
+    ],
+    "globals": {
+      "angular": true
+    }
 }
