@@ -1,3 +1,7 @@
-require('thirdparty/angularjs/angular-resource');
-require('thirdparty/angularjs/angular-route');
+//
+// EXTENSIONS
+//
+var resource = require('thirdparty/angularjs/angular-resource');
+var route    = require('thirdparty/angularjs/angular-route');
+
 

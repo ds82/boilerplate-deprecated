@@ -18,30 +18,13 @@ gulp.task('browserify', ['browserify:app']);
 
 gulp.task('browserify:app', function() {
   // Single entry point to browserify
-  browserify()
+  return browserify({ debug: true })
     .add('./app/scripts/main.js')
     .require('./app/thirdparty/jquery/jquery.js', { expose: 'thirdparty/jquery' })
-    .require('./app/thirdparty/angularjs/angular', { expose: 'thirdparty/angularjs' })
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest( OUTPUT + 'js/'));
 
-
-  // gulp.src('./app/scripts/main.js')
-  //   .pipe(browserify({
-  //     insertGlobals : true,
-  //     debug : !gulp.env.production,
-  //     require: [
-  //       ['./angular/app', { expose: 'app' }],
-  //
-  //       ['../thirdparty/jquery/dist/jquery', { expose: 'jquery' }],
-  //       ['../thirdparty/angular/angular', { expose: 'angularjs' }],
-  //     ]
-  //   }))
-  //   .on('error', function( err ) {
-  //     console.log( err );
-  //   })
-  //   .pipe(gulp.dest('./app/dist/'));
 });
 
 gulp.task('watch', function() {
@@ -71,5 +54,6 @@ gulp.task('default', function(){
   gulp.run('server');
   gulp.run('browserify');
   gulp.run('less');
-  gulp.run('watch');
+
+  gulp.watch('./app/scripts/**/*.js', ['browserify:app']);
 });

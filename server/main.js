@@ -1,6 +1,9 @@
-var express = require('express'),
-    modules = [],
-    app = express();
+'use strict';
+
+var path    = require('path');
+var express = require('express');
+var modules = [];
+var app     = express();
 
 
 var allowCrossDomain = function( req, res, next ) {
@@ -13,7 +16,8 @@ var allowCrossDomain = function( req, res, next ) {
 };
 
 app.configure(function() {
-  app.use( express.static(__dirname + '/../app') );
+  var appDir = path.resolve( __dirname, '../app' );
+  app.use( express.static( appDir ));
   app.use( allowCrossDomain );
   app.use( express.bodyParser() );
   app.use( express.cookieParser() );
